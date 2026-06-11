@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>齊藤 健一郎 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>齊藤 健一郎 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. 株式会社Leaner Technologies</a>
+  <a href="#k2">2. 弁護士ドットコム株式会社</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">マーケティング</span><span class="badge badge-blue">非上場</span></div>
+  <div class="co-name">株式会社Leaner Technologies</div>
+  <div class="co-url"><a href="https://leaner.co.jp/" target="_blank">https://leaner.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都品川区西五反田7丁目23-1 第3TOCビル 9F</td></tr><tr><th>設立</th><td>2019年2月</td></tr><tr><th>資金調達</th><td>累計約32億円（シリーズBで約25億円のエクイティ調達+約7億円のデットファイナンス）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>法人の年間購買総額1000兆円という巨大市場において、まだ手付かずの領域に挑戦し続ける熱量溢れる組織</li><li>トヨタやニデックなど大手企業への導入実績を積み重ね、調達業務のデジタル化で企業の利益率向上に直結する価値を提供</li><li>職種の垣根を越えて事業成長に向き合う文化があり、個人の成長スピードも圧倒的</li><li>フレックス制やリモートワーク制度、充実した福利厚生でワークライフバランスも実現</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">日本企業の調達・購買業界を革命的に変革する注目のスタートアップです。2024年10月にはシリーズBラウンドで約15億円の資金調達を実施し、累計約25億円のエクイティ調達に加え、2026年2月には約7億円のデットファイナンスも実施し、累計約32億円規模の資金を確保しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>日本企業の調達・購買業界を革命的に変革する注目のスタートアップです。2024年10月にはシリーズBラウンドで約15億円の資金調達を実施し、累計約25億円のエクイティ調達に加え、2026年2月には約7億円のデットファイナンスも実施し、累計約32億円規模の資金を確保し、プロダクト強化および組織拡大を加速させています。</p><p>当初は従業員数500名〜3000名のミドルエンタープライズをターゲットにしていましたが、現在ではトヨタやニデックなど大手企業への導入実績を積み重ね、メールやFAXに依存していた従来の調達業務をデジタル化し、企業の利益率向上に直結する価値を提供し続けています。</p><p>ミッションは「調達のスタンダードを刷新し続ける」こと。法人の年間購買総額1000兆円という巨大市場において、まだ手付かずの領域に挑戦し続ける熱量溢れる組織です。エンジニアから営業まで職種の垣根を越えて事業成長に向き合う文化があり、個人の成長スピードも圧倒的。</p><p><strong>代表取締役CEO 大平 裕介氏</strong><br>1993年生まれ。慶應義塾大学卒業後、新卒でA.T. カーニーに入社し、主にコスト改革、事業戦略策定などに従事し、2018年に当時最速でアソシエイトに就任。2019年2月に株式会社Leaner Technologiesを創業。</p><p><strong>受賞歴</strong></p><ul><li>2025年：「ITトレンド年間ランキング2025」購買管理システム（大規模部門）1位</li><li>2025年：Japan Mobility Show「Pitch Contest & Awards」ミドル/レイター部門 グランプリ</li><li>2023年：「FORBES 30 UNDER 30 ASIA LIST」選出（代表取締役CEO 大平裕介）</li><li>2023年10月：「住友不動産ベンチャーサミット」ピッチコンテストにて最優秀賞を受賞</li></ul></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 マーケティング</div>
+          <div class="job-preview">法人の買い物1,000兆円を科学する、調達・購買領域のDXを推進するマーケティング職</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p>1,000兆円にものぼる、法人の1年間の購買総額。弊社は日本で唯一、この法人の買い物1,000兆円を科学する挑戦をしています。私たちは、調達・購買領域のDXを推進し、すべての企業にとって不可欠で、利益創出において重要な活動を支援しています。</p><p>営業、労務、会計領域はインフラのクラウド化が進んでいますが、調達・購買領域の業務インフラは未だExcelやFaxなどの紙書類がメイン。システムが導入されている場合でも、多くが10年以上前にオンプレで開発されたものから変わっておらず、改善の余地が大きい状態です。</p><p>この調達・購買領域に、新しいスタンダードとなるプロダクトを提供しているのがLeanerです。</p><p><strong>プロダクト</strong></p><ul><li><strong>リーナー見積</strong>：見積の依頼から回答承認まで完結する、見積業務をデジタル化するクラウドサービス</li><li><strong>リーナー購買</strong>：見積の後段プロセスの発注において、お取引先のすべての商品、見積品、Amazon様やモノタロウ様など法人カタログを統合で検索でき、購買を一元管理できるプラットフォーム</li></ul><p><strong>業務内容</strong></p><p>事業拡大に合わせ、当該領域をリードしてくださるマーケターを募集することにいたしました。ご経験やご志向に合わせて、幅広くアサインを検討させて頂きます。</p><ul><li><strong>オンラインマーケ</strong><ul><li>リード獲得のためのコンテンツ企画・制作（ウェブサイト、導入事例、ホワイトペーパー、紹介動画）</li><li>ウェブサイト改善（アクセス解析ツールを活用した集計・分析、実行、運用、検証）</li><li>オンライン広告（記事広告、運用型、アフィリエイト など）での新規リード獲得のための施策考案、運用、検証、改善</li></ul></li><li><strong>イベント/カンファレンス</strong><ul><li>オンライン・オンライン問わず、イベントを軸としたマーケティング業務</li><li>展示会等の出展イベントに関する業務（年間の出展計画の策定、折衝、ブース設計、展示会に関連する制作物のディレクション業務）</li><li>ウェビナー、カンファレンス等に関する業務（企画・折衝・実行、登壇コンテンツの企画立案・集客に関するメディアプランニング）</li></ul></li><li><strong>ナーチャリング・Ops</strong><ul><li>ウェブサイト改善要件定義、アクセス解析ツールデータの集計・分析から施策考案・実行・運用</li><li>MA・SFAを利用した既存リードに対するナーチャリング施策考案、運用、検証、改善</li><li>各種施策実行に必要なデータのクレンジング、データ取得に必要な環境整備</li></ul></li></ul><p><strong>必須スキル</strong></p><ul><li><span class='tag tag-must'>MUST</span> BtoBマーケティングの業務経験</li></ul><p><strong>歓迎スキル</strong></p><ul><li><span class='tag tag-want'>WANT</span> 特定のマーケティングチャネルの上流の課題設定から施策検討、実行後の効果検証まで一連担われてきた経験</li><li><span class='tag tag-want'>WANT</span> マーケティング施策推進におけるプロジェクトマネジメント経験</li><li><span class='tag tag-want'>WANT</span> マーケティング戦略立案及びKPI設計・施策と予算のアロケーション経験</li><li><span class='tag tag-want'>WANT</span> データ解析（GA・SQL）スキルや効果測定、最適化に関する知識</li></ul><p><strong>求める人物像</strong></p><ul><li>世の中を抜本的に変えることに対して、一緒にワクワクできる方</li><li>ロジカル×体系的に物事をとらえることができる方</li><li>素直かつアンラーニングの姿勢で顧客にも、社内メンバーとも協働できる方</li><li>全社や事業、チームの目標を自分事と捉え、事業/チームの目標達成を優先できる方</li></ul><p><strong>年収</strong><br>600万〜1200万円（基本月給：50万～）<br>※上記月給には、固定割増手当（45時間分、130,200円～）を含む。超過分は全額支給します。<br>※ストックオプション制度あり（正社員対象）</p>
+        <div class="meta-pills"><span class="pill">📍 東京（品川区西五反田）</span><span class="pill">🏠 リモートワーク可</span><span class="pill">⏰ フレックス制</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://leaner.co.jp/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://speakerdeck.com/leaner_tech/leaner-company-profile" target="_blank">📊 企業紹介資料</a><a class="lbtn lbtn-out" href="https://www.youtube.com/watch?v=FhUkcBqrdpw" target="_blank">🎥 事業紹介動画</a></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">Field Marketing</span><span class="badge badge-blue">東証プライム</span></div>
+  <div class="co-name">弁護士ドットコム株式会社</div>
+  <div class="co-url"><a href="https://corporate.bengo4.com/corporate/" target="_blank">https://corporate.bengo4.com/corporate/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都港区六本木四丁目1番4号 黒崎ビル</td></tr><tr><th>設立</th><td>2005年</td></tr><tr><th>上場区分</th><td>東証プライム（2025年12月に東証グロースから市場変更）</td></tr><tr><th>登録弁護士数</th><td>29,000人以上</td></tr><tr><th>月間サイト訪問者数</th><td>1,600万人</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>弁護士をはじめとする専門家の知見と最先端テクノロジーを融合し、社会課題の解決に挑むプロフェッショナル・テック企業</li><li>電子契約サービス「クラウドサイン」は日本初のクラウド型電子署名サービスとして市場シェアNo.1を獲得</li><li>創業20周年を迎えた現在も、ベンチャー精神を失うことなく、既存の常識や業界構造そのものをアップデートし続ける姿勢</li><li>高い専門性を持つ人材同士が協働しながら、安定した事業基盤の上でなお挑戦を楽しみ、本質的な価値創出に向き合える環境</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">弁護士ドットコムは、「プロフェッショナルテック」で次の常識をつくる企業として、法律をもっと身近にするという創業当初から変わらないミッションを追求し続けています。2005年に弁護士出身の元榮太一郎氏が創業して以来、現在では登録弁護士数29,000人以上、月間サイト訪問者数1,600万人を誇る日本最大級の法律ポータルサイトへと成長。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>弁護士ドットコムは、「プロフェッショナルテック」で次の常識をつくる企業として、法律をもっと身近にするという創業当初から変わらないミッションを追求し続けています。2005年に弁護士出身の元榮太一郎氏が創業して以来、現在では登録弁護士数29,000人以上、月間サイト訪問者数1,600万人を誇る日本最大級の法律ポータルサイトへと成長。</p><p>特に電子契約サービス「クラウドサイン」は日本初のクラウド型電子署名サービスとして市場シェアNo.1を獲得し、グレーゾーン解消制度の活用や規制改革推進会議への参加を通じて電子契約の社会実装に大きく貢献。2023年10月には判例データベース「判例秘書」を提供する株式会社エル・アイ・シーを買収、法務領域における総合プラットフォーム企業としての地位を確立しています。</p><p>最近では、AIと法務領域を融合させた先進的な取り組みが注目され、アンダーソン・毛利・友常法律事務所やみらい翻訳と連携した国内初の法務領域マルチエージェント連携実証実験を開始し、法務業務の革新的な効率化を目指しています。また、2025年12月には東証グロースから東証プライムへの市場変更を果たし、創業20年を迎える節目の年に更なる成長ステージへと駒を進めました。</p><p>掲げるビジョンは「まだないやり方で、世界を前へ」。創業20周年を迎えた現在も、ベンチャー精神を失うことなく、既存の常識や業界構造そのものをアップデートし続ける姿勢が、組織全体に根付いています。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 Field Marketing（Legal Brain）</div>
+          <div class="job-preview">法務AIの最前線で、最も厳しいプロフェッショナルに選ばれ続けるマーケティング施策を立案・実行</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>募集背景</strong></p><p>2025年5月にリリースした「Legal Brain エージェント」は、専門家を&quot;調べる&quot;時間から解放し、本質的な&quot;考える&quot;業務へ集中させることで、「二割司法」の改善という大きな社会的課題の解決に挑んでいます。私たちが目指しているのは、単なる便利ツールの提供ではなく、司法のあり方そのものをアップデートする新しい未来の実現です。</p><p>法務AIの進化を担うLegal Brain事業では業容拡大に伴い優秀なマーケテターを募集します。法務AIという、まだ誰も答えを持っていない市場で、生成品質に最も厳しいプロフェッショナルに選ばれ続けるプロダクトのマーケティング施策を立案し実行するポジションです。</p><p><strong>職務詳細</strong></p><p>LegalBrainエージェントは、国内大手法律事務所・企業法務部門が実際に使うAIであり、生成品質に最も厳しいプロフェッショナルに選ばれることを証明し続けているプロダクトです。</p><p>本ポジションでは、エンタープライズ向けのイベント・デジタル両面の実行、営業・CSとのアラインメント、アシスタントのディレクションをお任せします。急成長するLegal Brain事業を、マーケティング施策の企画・実行の両面で強力に推進いただきます。</p><p>1名のアシスタントをディレクションしながら、以下の業務を推進いただきます。</p><ul><li><strong>イベント・セミナー・展示会</strong><ul><li>大手法律事務所・企業法務部門をターゲットにしたオンライン/リアルセミナーの企画・運営・効果測定</li><li>業界展示会・カンファレンスへの出展計画と当日オペレーション（アシスタントと協働）</li><li>イベントを通じたターゲット企業との接点創出とリレーション構築</li></ul></li><li><strong>インバウンド・デジタル施策</strong><ul><li>マーケティングサイト（サービス公式Web）の企画・編集・更新管理</li><li>コンテンツマーケティング（ホワイトペーパー・事例・ブログ等）の企画・制作管理</li><li>Web広告・SNS等を活用したターゲット企業へのリーチ施策の実行</li><li>MAツールを活用したエンタープライズ向けNurturingシナリオの設計・運用</li></ul></li><li><strong>営業・CSアラインメント</strong><ul><li>営業・CSチームとの定期的な情報共有・すり合わせ</li><li>マーケ施策の意図・成果を営業・CSに伝え、フィードバックを施策に反映する</li><li>ターゲット企業のコンタクト開発状況を事業部で共有し、Nurturingや獲得の優先度を整合する</li></ul></li></ul><p><strong>ポジションの魅力</strong></p><p>本ポジションのように急成長するAIテクノロジーでのマーケティング経験は、「誰も正解を知らないAI市場で、最も厳しい顧客を動かすマーケティングを切り拓いた経験」として、&quot;どの市場でも通用するAIマーケティング人材&quot;としてのキャリアを築き上げることが可能です。</p><ul><li>市場開拓の最前線で成果を形作ることができる　急成長のAI市場で、自分の施策が直接事業の結果につながります。</li><li>最も厳しいプロに届けるマーケティングの経験が積める　生成品質に最も厳しいプロフェッショナルを動かす、精度の高い仕事です。</li><li>正解のない市場で、自ら答えを作ることができる　誰も歩いたことのない道を、マーケティング施策の実行で切り拓く仕事です。</li></ul><p><strong>必須要件</strong></p><ul><li><span class='tag tag-must'>MUST</span> BtoBマーケティング実務経験 3年以上</li><li><span class='tag tag-must'>MUST</span> イベント・セミナー運営およびそれに関わるデジタルマーケティング施策に一部携わったことがある方（デジタルにおいてはイベントやセミナー運営に必要な施策の経験を必須とします）</li><li><span class='tag tag-must'>MUST</span> エンタープライズ向けのリレーション構築・Nurturingに関与した経験</li><li><span class='tag tag-must'>MUST</span> 営業・CSと連携しながら施策を推進した経験（アラインメントを取りながら動ける）</li><li><span class='tag tag-must'>MUST</span> Salesforce等CRMを使ったコンタクト・商談管理の経験</li><li><span class='tag tag-must'>MUST</span> 業務委託・アシスタント等への指示出し・進行管理経験</li><li><span class='tag tag-must'>MUST</span> プレイブックがない環境で自分でタスクを定義し、最後まで実行責任を持てる方</li><li><span class='tag tag-must'>MUST</span> 答えのない環境で自ら仮説を立て、試行錯誤しながら前進できるマインドセットをお持ちの方</li></ul><p><strong>歓迎要件</strong></p><ul><li><span class='tag tag-want'>WANT</span> デジタル施策（広告・コンテンツ・MA）の実務経験</li><li><span class='tag tag-want'>WANT</span> BtoB SaaS・リーガルテック・高規制業種（金融・保険・医療・製薬）での実務経験</li><li><span class='tag tag-want'>WANT</span> GA4・MAツール（Account Engagement等）・LPOの実務経験</li><li><span class='tag tag-want'>WANT</span> ユニットエコノミクス（リード単価・商談化率・CAC等）の理解</li><li><span class='tag tag-want'>WANT</span> イベント/セミナーの主催またはリーダー経験</li><li><span class='tag tag-want'>WANT</span> リード獲得からCRMでのクローズまでを追うキャンペーン管理の経験</li></ul><p><strong>こんな方と働きたい</strong></p><ul><li>弁護士ドットコムが目指すミッション「まだないやり方で、世界を前へ。」とビジョン「&quot;プロフェッショナル・テック&quot;で、次の常識をつくる。」に賛同し、社会的意義を感じて働ける方</li><li>市場を読み、仮説で動ける方　データと直感を組み合わせ、答えのない問いに自分の仮説で動ける方</li><li>構造で考え、言語化できる方　複雑な問題を整理し、経営・営業・PdMに伝わる言葉で落とし込める方</li><li>自ら動いて、ゼロを1にしたことがある方　プレイブックがない環境で自分でフレームを作り、手を動かして結果を出した実績がある方</li><li>顧客と製品、開発と営業・CS部門をリスペクトできる方　プロダクトへの深い理解とステークホルダーへのリスペクトが業務を進める秘訣だと考えています</li></ul><p><strong>年収</strong><br>6,049,908円 - 9,045,576円<br>月額504,159円（131,200円）～753,798円（196,100円）<br>・基本給（ライフプラン給基準額を含む）：月額から（ ）内の固定残業手当を除いた額<br>・時間外労働が月45時間を超えた場合は残業手当を別途支給<br>※上記は想定の為、現職給与を加味しオファーします。</p>
+        <div class="meta-pills"><span class="pill">📍 東京（港区六本木）</span><span class="pill">🏠 フレックス制</span><span class="pill">💼 東証プライム</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://corporate.bengo4.com/corporate/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://www.slideshare.net/ssuser2ca81f/saiyo-vol4-20210126-241859561" target="_blank">📊 採用資料</a><a class="lbtn lbtn-out" href="https://legalbrain.com/" target="_blank">🧠 Legal Brainサイト</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが齊藤 健一郎 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
